@@ -83,9 +83,15 @@
         </el-option>
       </el-select>
       <el-select v-model="sel2_o" @change="changeSelect2">
-        <el-option v-for="item in sel2" :key="item.id" :label="item.name" :value="item.name">
-        </el-option>
+        <el-option v-for="item in sel2" :key="item.id" :label="item.name" :value="item.name"></el-option>
       </el-select>
+    </el-row>
+    <el-row>
+<!--      互斥单选框-->
+      <el-radio-group v-model="radio" @change="selectRadio">
+        <el-radio label="男"></el-radio>
+        <el-radio label="女"></el-radio>
+      </el-radio-group>
     </el-row>
   </div>
 </template>
@@ -103,7 +109,8 @@ export default {
       boyDaughters:[{value:'卢梦阮'}, {value:'忆宝'}, {value:'阿云'}],
       sel:'',
       sel2_o:'',
-      sel2:[{name:'Dinner',id:1},{name:'DinnerPlus',id:2}]
+      sel2:[{name:'Dinner',id:1},{name:'DinnerPlus',id:2}],
+      radio:''
     }
   },
   methods:{
@@ -118,6 +125,9 @@ export default {
     },
     changeSelect2(cb){
       cb(this.sel2)
+    },
+    selectRadio(){
+      alert(this.radio)
     }
   }
 }
